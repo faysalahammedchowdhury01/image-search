@@ -32,10 +32,14 @@ function getImages(searchValue) {
 
 /* Display Images */
 function displayImages(data) {
-  showImage.innerHTML = data.hits
-    .map((el) => {
-      console.log(el);
-      return `
+  console.log(data.hits.length);
+  if (!data.hits.length) {
+    showImage.innerHTML = '';
+    alert('Image not found!');
+  } else {
+    showImage.innerHTML = data.hits
+      .map((el) => {
+        return `
         <div class="col-md-6 col-xl-4 image">
             <a href="${el.pageURL}" target="_blank"
                 ><img
@@ -45,8 +49,9 @@ function displayImages(data) {
             /></a>
         </div>
       `;
-    })
-    .join('');
+      })
+      .join('');
+  }
 }
 
 /* Event Listener */
