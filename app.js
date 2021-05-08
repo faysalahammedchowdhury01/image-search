@@ -13,9 +13,10 @@ function getSearchValue(e) {
   e.preventDefault();
   /* Get Value */
   const value = this.querySelector('input').value.trim();
+  searchValue = value;
 
   if (value) {
-    getImages(value);
+    getImages(searchValue);
   }
 }
 
@@ -32,7 +33,6 @@ function getImages(searchValue) {
 
 /* Display Images */
 function displayImages(data) {
-  console.log(data.hits.length);
   if (!data.hits.length) {
     showImage.innerHTML = '';
     alert('Image not found!');
